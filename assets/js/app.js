@@ -123,9 +123,9 @@ const languages = {
   }
 };
 
-const menuActive = ["md:bg-transparent", "md:text-green-400", "md:dark:text-green-600", "bg-green-700"];
+const menuActive = ["md:bg-transparent", "md:text-green-500", "bg-green-700", "text-white"];
 
-const menuInactive = ["text-gray-900", "hover:bg-gray-100", "md:hover:bg-transparent", "md:hover:text-green-300", "dark:text-white", "md:dark:hover:text-green-500", "dark:hover:bg-gray-700", "md:dark:hover:bg-transparent", "dark:border-gray-700"];
+const menuInactive = ["md:underline-offset-4", "md:decoration-2", "md:hover:underline", "text-gray-900", "hover:bg-gray-100", "md:hover:bg-transparent", "md:hover:text-green-400", "dark:text-white", "md:dark:hover:text-green-500", "dark:hover:bg-gray-700", "md:dark:hover:bg-transparent", "dark:border-gray-700"];
 
 document.addEventListener('alpine:init', () => {
   Alpine.data('menu', () => ({
@@ -172,13 +172,13 @@ document.addEventListener('alpine:init', () => {
 
   Alpine.store('currentMenu', {
     init() {
-      const menuEl = document.getElementById('about');
+      const menuEl = document.getElementById('home-menu');
 
       menuEl.classList.remove(...menuInactive);
       menuEl.classList.add(...menuActive);
     },
     
-    menu: 'about',
+    menu: 'home-menu',
 
     change(newMenu) {
       const lastMenuEl = document.getElementById(this.menu);
@@ -221,4 +221,10 @@ document.addEventListener('alpine:init', () => {
       }
     }
   });
-})
+
+  document.addEventListener("scroll", (event) => {
+    const el = document.elementFromPoint(0, 500);
+  
+    Alpine.store('currentMenu').change(el.id + '-menu');
+  });
+});

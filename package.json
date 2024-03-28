@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "@material/web": "^1.4.0",
-    "flowbite": "^2.3.0"
+    "flowbite": "^2.3.0",
+    "tailwindcss-animated": "^1.0.1"
   },
   "scripts": {
     "dev": "npx live-server --port=3030",
