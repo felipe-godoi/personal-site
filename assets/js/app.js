@@ -123,9 +123,9 @@ const languages = {
   }
 };
 
-const menuActive = ["md:bg-transparent", "md:text-green-700", "md:dark:text-green-500", "bg-green-700"];
+const menuActive = ["md:bg-transparent", "md:text-green-400", "md:dark:text-green-600", "bg-green-700"];
 
-const menuInactive = ["text-gray-900", "hover:bg-gray-100", "md:hover:bg-transparent", "md:hover:text-green-700", "dark:text-white", "md:dark:hover:text-green-500", "dark:hover:bg-gray-700", "md:dark:hover:bg-transparent", "dark:border-gray-700"];
+const menuInactive = ["text-gray-900", "hover:bg-gray-100", "md:hover:bg-transparent", "md:hover:text-green-300", "dark:text-white", "md:dark:hover:text-green-500", "dark:hover:bg-gray-700", "md:dark:hover:bg-transparent", "dark:border-gray-700"];
 
 document.addEventListener('alpine:init', () => {
   Alpine.data('menu', () => ({
@@ -191,6 +191,34 @@ document.addEventListener('alpine:init', () => {
 
       newMenuEl.classList.remove(...menuInactive);
       newMenuEl.classList.add(...menuActive);
+    }
+  });
+
+  Alpine.store('darkMode', {
+    init() {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          this.active = true;
+      } else {
+        this.active = false;
+      }
+
+      if (this.active) {
+        document.getElementsByTagName('html')[0].classList.add("dark");
+      } else {
+        document.getElementsByTagName('html')[0].classList.remove("dark");
+      }
+    },
+
+    active: true,
+
+    toggle() {
+      this.active = !this.active;
+
+      if (this.active) {
+        document.getElementsByTagName('html')[0].classList.add("dark");
+      } else {
+        document.getElementsByTagName('html')[0].classList.remove("dark");
+      }
     }
   });
 })
