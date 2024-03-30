@@ -26,8 +26,17 @@ const locales = {
         },
         "BIO": {
             "TITLE": "Biography",
-            "TEXT": "Software Developer with 4+ years of experience working primarily with Angular and Node.js technologies. Extensive experience with relational databases. Enthusiastic about artificial intelligence technologies. B.Sc. in Computer Engineering and pursuing a Postgraduate Degree in Distributed Software Architecture (PUC Minas) and a Postgraduate Degree in Blockchain Development (UniFECAF).",
+            "TEXT": "Software Developer with 4+ years of experience working primarily with Angular and Node.js technologies. Extensive experience with relational databases. Enthusiastic about artificial intelligence technologies. B.Sc. in Computer Engineering (IFTM) and pursuing a Postgraduate Degree in Distributed Software Architecture (PUC Minas) and a Postgraduate Degree in Blockchain Development (UniFECAF).",
             "ABOUT_ME": "About me"
+        },
+        "SKILLS": {
+            "TITLE": "Technologies",
+            "SECOND_TITLE": "Skills",
+            "TEXT": {
+                "1": "Here are the main technologies I master. Besides these, I've had contact with several others that I haven't listed here because I don't consider myself proficient in them, but I'm always studying and willing to learn new technologies.",
+                "2": "Among the described technologies, I have more experience working with Angular, NodeJS, and Typescript. Alongside these technologies, I also use various databases, but I highlighted MySQL as the one I have the most experience with.",
+                "3": "Furthermore, I am specializing in Blockchain technologies and Distributed Software Architecture."
+            }
         }
     },
     "pt-br": {
@@ -50,8 +59,17 @@ const locales = {
         },
         "BIO": {
             "TITLE": "Biografia",
-            "TEXT": "Desenvolvedor de Software com mais de 4 anos de experiência trabalhando principalmente com as tecnologias Angular e Node.js. Extensa experiência com bancos de dados relacionais. Entusiasta das tecnologias de inteligência artificial. Bacharel em Engenharia de Computação e cursando Pós-Graduação em Arquitetura de Software Distribuído (PUC Minas) e Pós-Graduação em Desenvolvimento de Blockchain (UniFECAF).",
+            "TEXT": "Desenvolvedor de Software com mais de 4 anos de experiência trabalhando principalmente com as tecnologias Angular e Node.js. Extensa experiência com bancos de dados relacionais. Entusiasta das tecnologias de inteligência artificial. Bacharel em Engenharia de Computação (IFTM) e cursando Pós-Graduação em Arquitetura de Software Distribuído (PUC Minas) e Pós-Graduação em Desenvolvimento de Blockchain (UniFECAF).",
             "ABOUT_ME": "Sobre mim"
+        },
+        "SKILLS": {
+            "TITLE": "Habilidades",
+            "SECOND_TITLE": "Tecnologias",
+            "TEXT": {
+                "1": "Aqui estão descritas  as principais tecnologias que domino. Além delas, já tive contato com várias outras que não coloquei aqui pois não considerar que as domino, mas estou sempre estudando e disposto a aprender novas tecnologias.",
+                "2": "Dentre as tecnologias descritas, possuo mais tempo trabalhando com Angular, NodeJS e Typescript. Juntamente com essas tecnologias também utilizo bancos de dados diversos, mas destaquei o MySQL por ser o que mais possuo experiência.",
+                "3": "Além disso, estou me especializando em tecnologias Blockchain e também em Arquitetura de Software Distribuido." 
+            }
         }
     },
 };

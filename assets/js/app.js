@@ -2,7 +2,7 @@ const languages = {
   "pt-br": {
     name: "Português",
     icon: `
-    <svg class="h-3.5 w-3.5 rounded-full me-2" xmlns="http://www.w3.org/2000/svg"
+    <svg class="h-6 w-6 lg:h-3.5 lg:w-3.5 lg:rounded-full lg:me-2" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2100 -1470 4200 2940">
                     <defs>
                       <path id="D" fill-rule="evenodd"
@@ -69,40 +69,13 @@ const languages = {
                       <use y="-1697.5" xlink:href="#S" transform="rotate(35.5)" />
                       <use y="-1697.5" xlink:href="#O" transform="rotate(38.5)" />
                     </g>
-                    <use id="αCMi" y="-132" x="-600" xlink:href="#star1" />
-                    <use id="αCMa" y="177" x="-535" xlink:href="#star1" />
-                    <use id="βCMa" y="243" x="-625" xlink:href="#star2" />
-                    <use id="γCMa" y="132" x="-463" xlink:href="#star4" />
-                    <use id="δCMa" y="250" x="-382" xlink:href="#star2" />
-                    <use id="εCMa" y="323" x="-404" xlink:href="#star3" />
-                    <use id="αVir" y="-228" x="228" xlink:href="#star1" />
-                    <use id="αSco" y="258" x="515" xlink:href="#star1" />
-                    <use id="βSco" y="265" x="617" xlink:href="#star3" />
-                    <use id="εSco" y="323" x="545" xlink:href="#star2" />
-                    <use id="θSco" y="477" x="368" xlink:href="#star2" />
-                    <use id="ιSco" y="551" x="367" xlink:href="#star3" />
-                    <use id="κSco" y="419" x="441" xlink:href="#star3" />
-                    <use id="λSco" y="382" x="500" xlink:href="#star2" />
-                    <use id="μSco" y="405" x="365" xlink:href="#star3" />
-                    <use id="αHya" y="30" x="-280" xlink:href="#star2" />
-                    <use id="γHya" y="-37" x="200" xlink:href="#star3" />
-                    <use id="αCru" y="330" xlink:href="#star1" />
-                    <use id="βCru" y="184" x="85" xlink:href="#star2" />
-                    <use id="γCru" y="118" xlink:href="#star2" />
-                    <use id="δCru" y="184" x="-74" xlink:href="#star3" />
-                    <use id="εCru" y="235" x="-37" xlink:href="#star4" />
-                    <use id="αTrA" y="495" x="220" xlink:href="#star2" />
-                    <use id="βTrA" y="430" x="283" xlink:href="#star3" />
-                    <use id="γTrA" y="412" x="162" xlink:href="#star3" />
-                    <use id="αCar" y="390" x="-295" xlink:href="#star1" />
-                    <use id="σOct" y="575" xlink:href="#star5" />
                   </svg>
     `
   },
   "en": {
     name: "English",
     icon: `
-    <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full me-2" xmlns="http://www.w3.org/2000/svg"
+    <svg aria-hidden="true" class="h-6 w-6 lg:h-3.5 lg:w-3.5 lg:rounded-full lg:me-2" xmlns="http://www.w3.org/2000/svg"
       id="flag-icon-css-us" viewBox="0 0 512 512">
       <g fill-rule="evenodd">
         <g stroke-width="1pt">
@@ -123,15 +96,22 @@ const languages = {
   }
 };
 
-const menuActive = ["md:bg-transparent", "md:text-green-500", "bg-green-700", "text-white"];
+const menuActive = "font-bold block py-2 px-3 rounded lg:p-0 lg:bg-transparent lg:text-green-500 bg-green-700 text-white";
+const menuInactive = "font-bold block py-2 px-3 rounded lg:p-0 lg:hover:underline lg:underline-offset-4 lg:decoration-2 text-gray-900 lg:hover:bg-transparent lg:hover:text-green-400 dark:text-white lg:dark:hover:text-green-500 lg:dark:hover:bg-transparent dark:border-gray-700";
 
-const menuInactive = ["md:underline-offset-4", "md:decoration-2", "md:hover:underline", "text-gray-900", "hover:bg-gray-100", "md:hover:bg-transparent", "md:hover:text-green-400", "dark:text-white", "md:dark:hover:text-green-500", "dark:hover:bg-gray-700", "md:dark:hover:bg-transparent", "dark:border-gray-700"];
+var ignoreScrollEvent = false;
+
+const sections = {
+  home: document.getElementById("home"),
+  about: document.getElementById("about"),
+  skills: document.getElementById("skills"),
+}
 
 document.addEventListener('alpine:init', () => {
   Alpine.data('menu', () => ({
     open: false,
-  
-    toggle() { 
+
+    toggle() {
       this.open = !this.open
     }
   }));
@@ -143,20 +123,20 @@ document.addEventListener('alpine:init', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const langFromUrl = urlParams.get('lang');
       if (langFromUrl && availableLocales.includes(langFromUrl)) {
-          language = langFromUrl
+        language = langFromUrl
       }
 
       let pageLanguage = defaultLanguage;
       if (availableLocales.includes(language)) {
-          pageLanguage = language;
+        pageLanguage = language;
       }
 
       this.selected = languages[pageLanguage];
     },
-    
+
     selected: languages["pt-br"],
-  
-    setLang(lang) { 
+
+    setLang(lang) {
       this.lang = lang;
 
       this.selected = languages[lang];
@@ -174,30 +154,50 @@ document.addEventListener('alpine:init', () => {
     init() {
       const menuEl = document.getElementById('home-menu');
 
-      menuEl.classList.remove(...menuInactive);
-      menuEl.classList.add(...menuActive);
+      menuEl.classList.remove(...menuInactive.split(" "));
+      menuEl.classList.add(...menuActive.split(" "));
     },
-    
+
     menu: 'home-menu',
 
     change(newMenu) {
       const lastMenuEl = document.getElementById(this.menu);
       const newMenuEl = document.getElementById(newMenu);
 
-      this.menu = newMenu;
+      if (newMenuEl && this.menu !== newMenu) {
+        this.menu = newMenu;
 
-      lastMenuEl.classList.remove(...menuActive);
-      lastMenuEl.classList.add(...menuInactive);
+        lastMenuEl.classList.remove(...menuActive.split(" "));
+        lastMenuEl.classList.add(...menuInactive.split(" "));
+        lastMenuEl.style.pointerEvents = "none";
+        lastMenuEl.style.pointerEvents = "auto";
 
-      newMenuEl.classList.remove(...menuInactive);
-      newMenuEl.classList.add(...menuActive);
+        newMenuEl.classList.remove(...menuInactive.split(" "));
+        newMenuEl.classList.add(...menuActive.split(" "));
+      }
+    },
+
+    changeAndScroll(newMenu) {
+      this.change(newMenu);
+
+      this.scroll(newMenu);
+    },
+
+    scroll(menu) {
+      const sectionName = menu.split("-");
+      const section = sections[sectionName[0]];
+
+      if (section) {
+        ignoreScrollEvent = true;
+        section.scrollIntoView();
+      }
     }
   });
 
   Alpine.store('darkMode', {
     init() {
       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          this.active = true;
+        this.active = true;
       } else {
         this.active = false;
       }
@@ -223,8 +223,24 @@ document.addEventListener('alpine:init', () => {
   });
 
   document.addEventListener("scroll", (event) => {
-    const el = document.elementFromPoint(0, 500);
-  
-    Alpine.store('currentMenu').change(el.id + '-menu');
+    var ignore = ignoreScrollEvent;
+    
+    ignoreScrollEvent = false;
+
+    if (ignore) return;
+    
+    const y = window.scrollY;
+
+    let currentSection = "home";
+
+    for (const section of Object.values(sections)) {
+      const elHeight = section.getBoundingClientRect();
+
+      if (y > elHeight.top) {
+        currentSection = section.id;
+      }
+    }
+
+    Alpine.store('currentMenu').change(currentSection + '-menu');
   });
 });
