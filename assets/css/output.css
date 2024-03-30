@@ -3971,6 +3971,10 @@ input:checked + .toggle-bg {
     padding-right: 3.5rem;
   }
 
+  .md\:pr-8 {
+    padding-right: 2rem;
+  }
+
   .md\:text-left {
     text-align: left;
   }
