@@ -189,7 +189,7 @@ document.addEventListener('alpine:init', () => {
 
       if (section) {
         ignoreScrollEvent = true;
-        section.scrollIntoView();
+        section.scrollIntoView({ behavior: 'smooth' });
       }
     }
   });
