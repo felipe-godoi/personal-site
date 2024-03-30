@@ -5,3 +5,7 @@
 .avatar {
     max-width: 36rem;
 }
+
+#navbar {
+    transition: top 0.5s;
+}

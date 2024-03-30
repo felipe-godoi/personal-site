@@ -243,4 +243,24 @@ document.addEventListener('alpine:init', () => {
 
     Alpine.store('currentMenu').change(currentSection + '-menu');
   });
+
+  const menuButtonEl = document.getElementById("menu-button");
+
+  menuButtonEl.addEventListener("focusout", (event) => {
+    const menuButtonInstance = FlowbiteInstances.getAllInstances()['Collapse']['menu-mobile'];
+    setTimeout(() => {
+      menuButtonInstance.toggle();
+    }, 10);
+  });
 });
+
+var prevScrollpos = window.scrollY;
+window.onscroll = function() {
+  var currentScrollPos = window.scrollY;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-100px";
+  }
+  prevScrollpos = currentScrollPos;
+}
