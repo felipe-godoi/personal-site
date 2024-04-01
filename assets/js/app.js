@@ -1,5 +1,5 @@
 const languages = {
-  "pt-br": {
+  "pt": {
     name: "Português",
     icon: `
     <svg class="h-6 w-6 lg:h-3.5 lg:w-3.5 lg:rounded-full lg:me-2" xmlns="http://www.w3.org/2000/svg"
@@ -105,6 +105,7 @@ const sections = {
   home: document.getElementById("home"),
   about: document.getElementById("about"),
   skills: document.getElementById("skills"),
+  contact: document.getElementById("contact"),
 }
 
 document.addEventListener('alpine:init', () => {
@@ -118,7 +119,7 @@ document.addEventListener('alpine:init', () => {
 
   Alpine.store('language', {
     init() {
-      let language = (window.navigator.userLanguage || window.navigator.language);
+      let language = (window.navigator.userLanguage || window.navigator.language).substr(0,2);
 
       const urlParams = new URLSearchParams(window.location.search);
       const langFromUrl = urlParams.get('lang');
@@ -132,9 +133,11 @@ document.addEventListener('alpine:init', () => {
       }
 
       this.selected = languages[pageLanguage];
+      this.lang = pageLanguage
     },
 
-    selected: languages["pt-br"],
+    lang: 'pt',
+    selected: languages['pt'],
 
     setLang(lang) {
       this.lang = lang;

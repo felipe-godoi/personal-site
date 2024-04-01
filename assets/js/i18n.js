@@ -1,8 +1,8 @@
 // List of available locales
-const availableLocales = ['en', 'pt-br'];
+const availableLocales = ['en', 'pt'];
 
 // Default locale.
-const defaultLanguage = 'pt-br';
+const defaultLanguage = 'pt';
 
 // Locale translations.
 const locales = {
@@ -37,9 +37,13 @@ const locales = {
                 "2": "Among the described technologies, I have more experience working with Angular, NodeJS, and Typescript. Alongside these technologies, I also use various databases, but I highlighted MySQL as the one I have the most experience with.",
                 "3": "Furthermore, I am specializing in Blockchain technologies and Distributed Software Architecture."
             }
+        },
+        "CONTACT": {
+            "CURRICULUM": "Download Resume",
+            "TALK": "Talk to me"
         }
     },
-    "pt-br": {
+    pt: {
         "HOME": {
             "TITLE": "Olá! Sou o Felipe Godoi, Desenvolvedor de Software e amante de tecnologia.",
             "TECH": {
@@ -70,13 +74,17 @@ const locales = {
                 "2": "Dentre as tecnologias descritas, possuo mais tempo trabalhando com Angular, NodeJS e Typescript. Juntamente com essas tecnologias também utilizo bancos de dados diversos, mas destaquei o MySQL por ser o que mais possuo experiência.",
                 "3": "Além disso, estou me especializando em tecnologias Blockchain e também em Arquitetura de Software Distribuido." 
             }
+        },
+        "CONTACT": {
+            "CURRICULUM": "Baixar currículo",
+            "TALK": "Fale comigo"
         }
     },
 };
 
 function translate() {
     // Manually detect users' language, strip languages such as `en-GB` to just `en`.
-    let language = (window.navigator.userLanguage || window.navigator.language);
+    let language = (window.navigator.userLanguage || window.navigator.language).substr(0, 2);
 
     // If `?lang=` exists in URL params & is valid, then use that instead.
     const urlParams = new URLSearchParams(window.location.search);
