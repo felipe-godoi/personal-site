@@ -252,7 +252,7 @@ document.addEventListener('alpine:init', () => {
   menuButtonEl.addEventListener("focusout", (event) => {
     const menuButtonInstance = FlowbiteInstances.getAllInstances()['Collapse']['menu-mobile'];
     setTimeout(() => {
-      menuButtonInstance.toggle();
+      menuButtonInstance.collapse();
     }, 10);
   });
 });
