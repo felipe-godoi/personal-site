@@ -231,9 +231,9 @@
               d="M12 19V5m0 14-4-4m4 4 4-4" />
           </svg>
         </a>
-        <a
+        <a x-data @click="$store.currentMenu.changeAndScroll('contact-menu')"
           class="text-green-500 border-green-500 w-40 cursor-pointer inline-flex items-center justify-center px-3 py-3 text-base font-medium text-center border rounded-lg hover:bg-green-100 dark:hover:bg-gray-700">
-          <span @click="$store.currentMenu.changeAndScroll('contact-menu')" class="font-bold" data-i18n="HOME.TALK">Vamos conversar</span>
+          <span class="font-bold" data-i18n="HOME.TALK">Vamos conversar</span>
         </a>
       </div>
       <div class="hidden lg:mt-0 lg:col-span-5 lg:flex avatar">
